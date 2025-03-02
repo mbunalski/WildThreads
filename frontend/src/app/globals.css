@@ -1,0 +1,99 @@
+/* Global Tailwind CSS Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-gray-900 bg-cover bg-center;
+  /* @apply background-image: url('/wildflower-field.webp'); Replace with your actual image path */
+}
+
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+.header {
+  @apply bg-white shadow-md p-4 flex justify-between items-center;
+}
+
+.header img {
+  @apply h-60 w-auto; /* Shrinking the header image */
+}
+
+.nav-links {
+  @apply flex space-x-4;
+}
+
+.card {
+  width: 250px; /* Set a fixed width */
+  height: 350px; /* Set a fixed height */
+  perspective: 1000px;
+  position: relative;
+}
+
+.card > div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.5s;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Keeps elements spaced */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.front {
+  background: white;
+}
+
+.back {
+  background: white;
+}
+
+.card img {
+  @apply w-full h-auto rounded-md shadow-sm;
+}
+
+.card-title {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+.button-primary {
+  position: absolute;
+  bottom: 10px;
+  width: 80%;
+  text-align: center;
+  padding: 0.75rem;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+      grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
+  }
+}
