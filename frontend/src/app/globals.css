@@ -57,6 +57,38 @@ body {
 
 .back {
   background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Ensures images don't stretch */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensures all images (including main.jpg) are neatly arranged */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Keeps images in two columns */
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  overflow-y: auto; /* Prevents overflow issues */
+}
+
+/* Standardizes image sizing on the back */
+.image-grid img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover; /* Ensures proper aspect ratio */
+  border-radius: 5px;
 }
 
 .card img {

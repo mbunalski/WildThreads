@@ -12,13 +12,6 @@ export function Display() {
       <ToggleButtons onSelect={setSelectedValue} />
       <div className="mt-6 p-4 border rounded-lg bg-white shadow-md">
         
-        {/* test */}
-        {/* <div className="grid grid-cols-3 gap-4 mt-6">
-        {directories.map((dir) => (
-        <Card key={dir} directory={dir} category="Available" />
-        ))}
-        </div> */}
-        {/* test */}
         <CardList category={selectedValue}/>
       </div>
     </div>

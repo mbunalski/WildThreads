@@ -16,19 +16,22 @@ export function Card({ directory, mainImage, allImages }) {
                         <p className="card-title">{directory}</p>
                     </div>
                 ) : (
-                    <div className="back absolute inset-0 flex flex-col items-center justify-center bg-white p-4 rounded-lg shadow-md rotate-y-180">
-                        <div className="grid grid-cols-2 gap-2">
+
+                    <div className="back">
+                        <div className="image-grid">
                             {/* Always include the main image first */}
-                            <img src={mainImage} alt={`${directory}-main`} className="w-16 h-16 rounded-md shadow-sm" />
+                            <img src={mainImage} alt={`${directory}-main`} />
 
                             {/* Display additional images if available */}
-                            {allImages.length > 0 ? (
-                                allImages.map((img, index) => (
-                                    <img key={index} src={img} alt={`${directory}-${index}`} className="w-16 h-16 rounded-md shadow-sm" />
+                            {allImages.length > 0
+                                ? allImages.map((img, index) => (
+                                    <img key={index} src={img} alt={`${directory}-${index}`} />
                                 ))
-                            ) : null}
+                                : null}
                         </div>
-                        <a href={`/contact?product=${directory}`} className="button-primary mt-4 px-4 py-2 rounded-lg text-white">Contact to Order</a>
+                        <a href={`/contact?product=${directory}`} className="button-primary">
+                            Contact to Order
+                        </a>
                     </div>
                 )}
             </div>
