@@ -29,7 +29,7 @@ export function Card({ directory, mainImage, allImages }) {
                                 ))
                                 : null}
                         </div>
-                        <a href={`/contact?product=${directory}`} className="button-primary">
+                        <a href={`/contact?item=${directory}`} className="button-primary">
                             Contact to Order
                         </a>
                     </div>
