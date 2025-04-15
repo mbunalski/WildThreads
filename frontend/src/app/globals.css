@@ -4,8 +4,10 @@
 @tailwind utilities;
 
 body {
-  @apply text-gray-900 bg-cover bg-center;
-  /* @apply background-image: url('/wildflower-field.webp'); Replace with your actual image path */
+  background-image: url('/wildflower-field.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .container {

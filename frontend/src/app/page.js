@@ -7,7 +7,7 @@ import {Display} from './components/Display.js';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100 text-center flex justify-center flex-col items-center bg-[url(/wildflower-field.webp)] bg-local md:bg-fixed bg-no-repeat bg-cover">
+    <div className="min-h-screen text-center flex justify-center flex-col items-center">
         <Header />
         <Display />
     </div>
