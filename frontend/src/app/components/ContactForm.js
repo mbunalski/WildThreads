@@ -199,11 +199,8 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from 'next/navigation';
 
 export function ContactForm({ itemName }) {
-  const searchParams = useSearchParams();
-//   const itemName = searchParams.get('item') || '';
 
   const [formData, setFormData] = useState({
     name: "",
