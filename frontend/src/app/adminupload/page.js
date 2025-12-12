@@ -63,30 +63,38 @@ export default function UploadPage() {
       setStatus('Please fill in all fields and select a main file.');
       return;
     }
-  
-    const body = new FormData();
-    body.append('name', formData.name);
-    body.append('price', formData.price);
-    body.append('mainFileIndex', formData.mainFileIndex);
-  
-    formData.files.forEach((file, index) => {
-      body.append(`file_${index}`, file);
-    });
-  
+
+    setStatus(`Uploading 0/${formData.files.length} files...`);
+
     try {
-      const res = await fetch('https://fpvemqdbve.execute-api.us-east-1.amazonaws.com/test', {
-        method: 'POST',
-        body, // FormData automatically sets the multipart headers
-      });
-  
-      if (res.ok) {
-        setStatus('Upload successful!');
-        setFormData({ name: '', price: '', files: [], mainFileIndex: null });
-      } else {
-        setStatus('Upload failed.');
+      // Upload files one at a time to avoid API Gateway 10MB payload limit
+      for (let i = 0; i < formData.files.length; i++) {
+        const file = formData.files[i];
+        const isMain = i === formData.mainFileIndex;
+
+        setStatus(`Uploading ${i + 1}/${formData.files.length} files...`);
+
+        const body = new FormData();
+        body.append('name', formData.name);
+        body.append('price', formData.price);
+        body.append('fileIndex', i);
+        body.append('isMain', isMain);
+        body.append('file', file);
+
+        const res = await fetch('https://fpvemqdbve.execute-api.us-east-1.amazonaws.com/test', {
+          method: 'POST',
+          body,
+        });
+
+        if (!res.ok) {
+          throw new Error(`Failed to upload ${file.name}`);
+        }
       }
+
+      setStatus('Upload successful!');
+      setFormData({ name: '', price: '', files: [], mainFileIndex: null });
     } catch (err) {
-      setStatus('Error connecting to Lambda.');
+      setStatus(`Upload failed: ${err.message}`);
       console.error(err);
     }
   };
