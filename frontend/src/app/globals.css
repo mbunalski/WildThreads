@@ -3,6 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure smooth scrolling on all devices, especially mobile */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /* body {
   background-image: url('/wildflower-field.png');
   background-repeat: no-repeat;
