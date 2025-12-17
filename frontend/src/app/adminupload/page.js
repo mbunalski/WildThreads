@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import imageCompression from 'browser-image-compression';
 
-const ADMIN_PASSWORD = 'wildthreads2024';
+const ADMIN_PASSWORD = 'wt2024';
 
 export default function UploadPage() {
   const [authenticated, setAuthenticated] = useState(false);
